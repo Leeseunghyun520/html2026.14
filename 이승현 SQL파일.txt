@@ -1,0 +1,27 @@
+CREATE TABLE students(
+     st_no char(10) NOT NULL,
+     name varchar(15) NOT NULL,
+     grade char(1) default'2',
+     Dept_code char(5),
+     PRIMARY KEY(st_no),
+     foreign key(Dept_code) references DEPARTMENT(Dept_code)
+     on DELETE SET NULL ON update cascade,
+     check(grade in('1','2','3'))
+     );
+CREATE DATABASE SCHOOL_DB;
+USE SCHOOL_DB;
+CREATE TABLE DEPARTMENT (
+		DEPT_CODE CHAR(5) NOT NULL,
+		DEPT_NAME VARCHAR(30) NOT NULL,
+		PRIMARY KEY(DEPT_CODE)
+);
+show tables;
+DESC DEPARTMENT;
+DESC students;
+select * from students;
+drop table students;
+INSERT INTO students (st_no, name, grade, Dept_code)
+VALUES ('2618', '최보성', '2', 'SW025');
+INSERT INTO DEPARTMENT (DEPT_CODE, DEPT_NAME)
+VALUES ('SW025', '소프트웨어과');
+UPDATE students set name='귀칼' where st_no ='2613';
